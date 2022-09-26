@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.greatlearning.lab5demo.entity.Student;
 import com.greatlearning.lab5demo.service.StudentService;
 
-
 @Controller
 @RequestMapping("/student")
 public class StudentController {
@@ -20,21 +19,20 @@ public class StudentController {
 	@Autowired
 	private StudentService studentsvc;
 
-	
 	@RequestMapping("/showForm")
 	public String showForm(Model theModel) {
 		Student theStudent = new Student();
 		theModel.addAttribute("student", theStudent);
 		return "student-form";
 	}
-	
+
 	@RequestMapping("/list")
 	public String listStudents(Model theModel) {
 		List<Student> theStudents = studentsvc.getStudents();
 		theModel.addAttribute("Students", theStudents);
 		return "list-student";
 	}
-	
+
 	@RequestMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
 
@@ -45,11 +43,11 @@ public class StudentController {
 
 		return "student-form";
 	}
-	
+
 	@PostMapping("/save")
 	public String saveStudent(@RequestParam("id") int id, @RequestParam("name") String name,
 			@RequestParam("department") String department, @RequestParam("country") String country) {
-		
+
 		Student theStudent = new Student();
 //		System.out.println(id);
 		if (id != 0) {
@@ -61,7 +59,7 @@ public class StudentController {
 		} else {
 			theStudent = new Student(name, department, country);
 		}
-			
+
 		// save the Student
 		studentsvc.saveStudent(theStudent);
 
@@ -69,7 +67,7 @@ public class StudentController {
 		return "redirect:/student/list";
 
 	}
-	
+
 	@RequestMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("id") int theId, Model theModel) {
 
@@ -81,11 +79,11 @@ public class StudentController {
 
 		return "student-form";
 	}
-	
+
 	@RequestMapping("/delete")
 	public String deleteStudent(@RequestParam("id") int theId) {
 		studentsvc.deleteStudent(theId);
-		return  "redirect:/student/list";
-		
+		return "redirect:/student/list";
+
 	}
 }

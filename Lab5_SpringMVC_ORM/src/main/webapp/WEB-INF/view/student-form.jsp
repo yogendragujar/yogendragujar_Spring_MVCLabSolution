@@ -8,7 +8,14 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+
 <title>Student Registration Form</title>
 </head>
 <body>
@@ -21,14 +28,16 @@
 			<!-- Add hidden form field to handle update -->
 			<input type="hidden" name="id" value="${Student.id}" />
 			<br>
-			<input type="text" name="name" value="${Student.name}" placeholder="Name"/>
-			<br>
-			<input type="text" name="department" value="${Student.department}" placeholder="Department">
-			<br>
-			<input type="text" name="country" value="${Student.country}" placeholder="country">
-			<br>
-			<br>
-			<button type="submit">Save</button>
+			<div class="form-inline">
+				<input type="text" name="name" value="${Student.name}" class="form-control mb-4 col-4" placeholder="Name"/>
+			</div>
+			<div class="form-inline">
+				<input type="text" name="department" value="${Student.department}" class="form-control mb-4 col-4" placeholder="Department">
+			</div>
+			<div class="form-inline">
+				<input type="text" name="country" value="${Student.country}" class="form-control mb-4 col-4" placeholder="country">
+			</div>
+			<button type="submit" class="btn btn-info col-2">Save</button>
 		</form>
 		
 		<hr>
